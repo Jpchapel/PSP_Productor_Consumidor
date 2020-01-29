@@ -3,26 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package productor_consumidor;
+
+package productorConsumidor;
 
 /**
  *
  * @author Stream
  */
-public class Productor extends Thread {
-
+public class Consumidor extends Thread{
     private Almacen almacen;
 
-    public Productor(String name, Almacen almacen) {
+    public Consumidor(String name, Almacen almacen) {
         super(name);
         this.almacen = almacen;
     }
 
     @Override
     public void run() {
-        while (true) {
-            almacen.producir(this.getName());
+        while(true){
+            almacen.consumir(this.getName());
         }
     }
-
 }

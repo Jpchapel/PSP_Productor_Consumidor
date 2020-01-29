@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package productor_consumidor;
+package productorConsumidor;
 
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
@@ -17,15 +17,15 @@ public class Almacen {
 
     private final int MAX_LIMITE = 20;
     private int producto = 0;
-    private Semaphore semaforoProductor = new Semaphore(MAX_LIMITE);
-    private Semaphore semaforoConsumidor = new Semaphore(0);
+    private Semaphore productor = new Semaphore(MAX_LIMITE);
+    private Semaphore consumidor = new Semaphore(0);
     private Semaphore mutex = new Semaphore(1);
 
     public void producir(String nombreProductor) {
         System.out.println(nombreProductor + " intentando almacenar un producto");
         try {
             
-                semaforoProductor.acquire();
+                productor.acquire();
                 mutex.acquire();
 
                 producto++;
@@ -38,7 +38,7 @@ public class Almacen {
         } catch (InterruptedException ex) {
             Logger.getLogger(Almacen.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            semaforoConsumidor.release();
+            consumidor.release();
         }
 
     }
@@ -47,7 +47,7 @@ public class Almacen {
         System.out.println(nombreConsumidor + " intentando retirar un producto");
         try {
             
-                semaforoConsumidor.acquire();
+                consumidor.acquire();
                 mutex.acquire();
 
                 producto--;
@@ -59,7 +59,7 @@ public class Almacen {
         } catch (InterruptedException ex) {
             Logger.getLogger(Almacen.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            semaforoProductor.release();
+            productor.release();
 
         }
     }

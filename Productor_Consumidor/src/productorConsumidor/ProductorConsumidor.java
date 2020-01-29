@@ -4,28 +4,28 @@
  * and open the template in the editor.
  */
 
-package productor_consumidor;
+package productorConsumidor;
 
 /**
  *
  * @author Stream
  */
-public class Productor_Consumidor {
+public class ProductorConsumidor {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        final int PRODUCTORES = 3;
-        final int CONSUMIDORES = 10;
+        final int PRODUCTOR = 3;
+        final int CONSUMIDOR = 10;
 
         Almacen almacen = new Almacen();
         
-        for (int i = 0; i < PRODUCTORES; i++) {
+        for (int i = 0; i < PRODUCTOR; i++) {
             new Productor("Productor " + i, almacen).start();
         }
         
-        for (int i = 0; i < CONSUMIDORES; i++) {
+        for (int i = 0; i < CONSUMIDOR; i++) {
             new Consumidor("Consumidor " + i, almacen).start();
         }
     }
