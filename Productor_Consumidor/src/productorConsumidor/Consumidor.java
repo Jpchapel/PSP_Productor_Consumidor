@@ -8,7 +8,7 @@ package productorConsumidor;
 
 /**
  *
- * @author Stream
+ * @author Joaquin Pereira Chapel
  */
 public class Consumidor extends Thread{
     private Almacen almacen;

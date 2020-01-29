@@ -7,7 +7,7 @@ package productorConsumidor;
 
 /**
  *
- * @author Stream
+ * @author Joaquin Pereira Chapel
  */
 public class Productor extends Thread {
 
